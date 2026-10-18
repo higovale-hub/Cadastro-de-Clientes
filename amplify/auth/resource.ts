@@ -23,9 +23,17 @@ export const auth = defineAuth({
         },
       },
       // URLs para onde o Cognito redireciona após o login/logout.
-      // Ajuste conforme o domínio de produção (veja AWS_SETUP.md).
-      callbackUrls: ['http://localhost:5173/', 'http://localhost:4173/'],
-      logoutUrls: ['http://localhost:5173/', 'http://localhost:4173/'],
+      // localhost = desenvolvimento; a URL do Amplify = produção.
+      callbackUrls: [
+        'http://localhost:5173/',
+        'http://localhost:4173/',
+        'https://main.dk39pmle9opre.amplifyapp.com/',
+      ],
+      logoutUrls: [
+        'http://localhost:5173/',
+        'http://localhost:4173/',
+        'https://main.dk39pmle9opre.amplifyapp.com/',
+      ],
     },
   },
   groups: ['admin'],
