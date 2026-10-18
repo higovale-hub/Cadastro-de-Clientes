@@ -1,0 +1,45 @@
+{
+  "name": "controle-de-clientes",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "PWA offline-first para cadastro e controle de clientes e dívidas",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "amplify:sandbox": "ampx sandbox",
+    "amplify:deploy": "ampx pipeline-deploy --branch main",
+    "sim:up": "docker compose up -d",
+    "sim:down": "docker compose down",
+    "sim:tabelas": "node scripts/criar-tabelas.mjs",
+    "sim:seed": "node scripts/seed.mjs",
+    "sim:reset": "docker compose down -v; docker compose up -d"
+  },
+  "dependencies": {
+    "@aws-amplify/ui-react": "^6.15.6",
+    "@aws-sdk/client-dynamodb": "^3.1143.0",
+    "@aws-sdk/lib-dynamodb": "^3.1143.0",
+    "aws-amplify": "^6.22.1",
+    "dexie": "^4.0.8",
+    "dexie-react-hooks": "^1.1.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@aws-amplify/backend": "^1.25.1",
+    "@aws-amplify/backend-cli": "^1.10.0",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "sharp": "^0.35.5",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.6",
+    "vite-plugin-pwa": "^0.20.5",
+    "vitest": "^2.1.9"
+  }
+}

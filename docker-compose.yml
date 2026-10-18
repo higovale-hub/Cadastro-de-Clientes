@@ -1,0 +1,31 @@
+# Ambiente de simulação da nuvem (ver DESIGN_SIMULACAO.md).
+# Sobe um DynamoDB Local + uma UI web para inspecionar os dados.
+# Portas escolhidas (8001/8002) para não conflitar com outros serviços.
+services:
+  dynamodb-local:
+    image: amazon/dynamodb-local:latest
+    container_name: cc-dynamodb-local
+    # Roda em memória: evita problemas de permissão do arquivo SQLite no
+    # volume montado no Windows. Para simulação/testes é o ideal — os dados
+    # são recriados via `sim:tabelas`/`sim:seed` a cada subida.
+    command: ['-jar', 'DynamoDBLocal.jar', '-sharedDb', '-inMemory']
+    ports:
+      - '8001:8000'
+    healthcheck:
+      test: ['CMD-SHELL', 'exit 0']
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  dynamodb-admin:
+    image: aaronshaf/dynamodb-admin:latest
+    container_name: cc-dynamodb-admin
+    ports:
+      - '8002:8001'
+    environment:
+      DYNAMO_ENDPOINT: 'http://dynamodb-local:8000'
+      AWS_REGION: 'local'
+      AWS_ACCESS_KEY_ID: 'local'
+      AWS_SECRET_ACCESS_KEY: 'local'
+    depends_on:
+      - dynamodb-local

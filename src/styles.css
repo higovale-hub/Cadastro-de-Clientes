@@ -1,0 +1,504 @@
+:root {
+  --azul: #1e6feb;
+  --azul-escuro: #1552b8;
+  --vermelho: #d92d20;
+  --vermelho-bg: #fdecea;
+  --amarelo: #b25e09;
+  --amarelo-bg: #fff4e5;
+  --verde: #067647;
+  --verde-bg: #ecfdf3;
+  --cinza-texto: #475467;
+  --cinza-borda: #e4e7ec;
+  --cinza-bg: #f7f8fa;
+  --texto: #101828;
+  --radius: 12px;
+  --sombra: 0 1px 3px rgba(16, 24, 40, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--texto);
+  background: var(--cinza-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--azul);
+  color: #fff;
+  box-shadow: var(--sombra);
+}
+
+.app-header h1 {
+  font-size: 18px;
+  margin: 0;
+  flex: 1;
+}
+
+.app-header .voltar {
+  background: rgba(255, 255, 255, 0.18);
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.status-conexao {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+}
+.status-conexao .ponto {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffd66b;
+}
+.status-conexao.online .ponto {
+  background: #4ade80;
+}
+
+/* Cartões de menu da tela inicial */
+.menu-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 8px;
+}
+.menu-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  border: 1px solid var(--cinza-borda);
+  border-radius: var(--radius);
+  padding: 18px 16px;
+  box-shadow: var(--sombra);
+  cursor: pointer;
+  transition: transform 0.06s ease, border-color 0.12s ease;
+}
+.menu-card:hover {
+  border-color: var(--azul);
+}
+.menu-card:active {
+  transform: scale(0.99);
+}
+.menu-card .icone {
+  font-size: 26px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: var(--cinza-bg);
+  border-radius: 10px;
+}
+.menu-card .titulo {
+  font-weight: 600;
+  font-size: 16px;
+}
+.menu-card .sub {
+  font-size: 13px;
+  color: var(--cinza-texto);
+}
+
+/* Formulários */
+.card {
+  background: #fff;
+  border: 1px solid var(--cinza-borda);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--sombra);
+  margin-bottom: 14px;
+}
+.form-group {
+  margin-bottom: 14px;
+}
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.form-group .obrigatorio {
+  color: var(--vermelho);
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--cinza-borda);
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  background: #fff;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(30, 111, 235, 0.15);
+}
+.form-erro {
+  color: var(--vermelho);
+  font-size: 12px;
+  margin-top: 4px;
+}
+.linha {
+  display: flex;
+  gap: 12px;
+}
+.linha > * {
+  flex: 1;
+}
+
+/* Botões */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 11px 16px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+.btn-primario {
+  background: var(--azul);
+  color: #fff;
+}
+.btn-primario:hover {
+  background: var(--azul-escuro);
+}
+.btn-secundario {
+  background: #fff;
+  color: var(--texto);
+  border-color: var(--cinza-borda);
+}
+.btn-perigo {
+  background: var(--vermelho);
+  color: #fff;
+}
+.btn-sucesso {
+  background: var(--verde);
+  color: #fff;
+}
+.btn-bloco {
+  width: 100%;
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.botoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+/* Selos / badges */
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+.badge-vencida {
+  background: var(--vermelho-bg);
+  color: var(--vermelho);
+}
+.badge-vencer {
+  background: var(--amarelo-bg);
+  color: var(--amarelo);
+}
+.badge-quitada {
+  background: var(--verde-bg);
+  color: var(--verde);
+}
+
+/* Listas */
+.lista-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid var(--cinza-borda);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  box-shadow: var(--sombra);
+  cursor: pointer;
+}
+.lista-item:hover {
+  border-color: var(--azul);
+}
+.lista-item .info {
+  flex: 1;
+  min-width: 0;
+}
+.lista-item .nome {
+  font-weight: 600;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.lista-item .detalhe {
+  font-size: 13px;
+  color: var(--cinza-texto);
+}
+.lista-item .valor {
+  text-align: right;
+  font-weight: 700;
+}
+
+.vazio {
+  text-align: center;
+  color: var(--cinza-texto);
+  padding: 40px 16px;
+}
+
+.secao-titulo {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cinza-texto);
+  margin: 18px 0 8px;
+}
+
+.parcela-linha {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--cinza-borda);
+}
+.parcela-linha:last-child {
+  border-bottom: none;
+}
+.parcela-linha .p-num {
+  font-weight: 600;
+  width: 70px;
+}
+.parcela-linha .p-info {
+  flex: 1;
+}
+.parcela-linha .p-venc {
+  font-size: 13px;
+  color: var(--cinza-texto);
+}
+
+.prevstandalone {
+  font-size: 13px;
+  color: var(--cinza-texto);
+  margin-top: 8px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--texto);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 50;
+}
+
+/* Ações de contato do telefone (mobile) */
+.acoes-telefone {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.btn-icone {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  font-size: 20px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: #fff;
+  box-shadow: var(--sombra);
+}
+.btn-icone:active {
+  transform: scale(0.95);
+}
+.btn-icone-ligar {
+  background: var(--azul);
+}
+.btn-icone-whatsapp {
+  background: #25d366;
+}
+.btn-icone-sms {
+  background: var(--cinza-texto);
+}
+
+/* Utilitário: só aparece em telas de celular */
+.mobile-only {
+  display: none;
+}
+@media (max-width: 640px) {
+  .mobile-only {
+    display: flex;
+  }
+}
+
+/* Modal de confirmação */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 24, 40, 0.5);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 100;
+}
+.modal-caixa {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 20px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+.modal-mensagem {
+  margin: 0 0 16px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--texto);
+}
+
+/* Selo de saldo de créditos no cabeçalho (discreto) */
+.selo-saldo {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  white-space: nowrap;
+  cursor: default;
+}
+.selo-saldo-baixo {
+  background: var(--vermelho);
+}
+
+/* ---------- Tooltip reutilizável (cabeçalho) ---------- */
+/* Envolve o gatilho; o tooltip aparece ao passar o mouse ou focar. */
+.com-tooltip {
+  position: relative;
+  display: inline-flex;
+}
+.tooltip-box {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 60;
+  width: 240px;
+  background: #fff;
+  color: var(--texto);
+  border: 1px solid var(--cinza-borda);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.18);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.12s ease, transform 0.12s ease, visibility 0.12s;
+  text-align: left;
+}
+.com-tooltip:hover .tooltip-box,
+.com-tooltip:focus-within .tooltip-box {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+/* Setinha apontando para o gatilho */
+.tooltip-box::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  right: 16px;
+  border: 6px solid transparent;
+  border-bottom-color: #fff;
+}
+.tooltip-titulo {
+  font-weight: 700;
+  font-size: 14px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--cinza-borda);
+}
+.tooltip-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--cinza-texto);
+}
+.tooltip-linha strong {
+  color: var(--texto);
+  font-size: 15px;
+}
+.tooltip-nota {
+  font-size: 12px;
+  color: var(--cinza-texto);
+  margin-top: 2px;
+}
+.tooltip-alerta {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--vermelho);
+  background: var(--vermelho-bg);
+  padding: 6px 8px;
+  border-radius: 6px;
+}

@@ -1,0 +1,20 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.vite
+
+# Variáveis de ambiente (contêm config local; nunca versionar)
+.env
+.env.*
+!.env.example
+
+# Amplify Gen 2 (saídas geradas e segredos — nunca versionar)
+.amplify
+amplify_outputs*
+amplifyconfiguration*
+
+# Logs e temporários
+*.log
+npm-debug.log*
